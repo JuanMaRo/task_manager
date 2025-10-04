@@ -35,6 +35,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ['id', 'name']
 
 class TaskSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(view_name='task-detail')
     # Use a read-only field to display the username of the assignee.
     assignee_username = serializers.ReadOnlyField(source='assignee.username')
     status = serializers.SlugRelatedField(slug_field='name', queryset=Status.objects.all())
@@ -42,5 +43,5 @@ class TaskSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ['id', 'title', 'description', 'assignee', 'assignee_username', 'category', 'status']
+        fields = ['id', 'url', 'title', 'description', 'assignee', 'assignee_username', 'category', 'status']
         read_only_fields = ['assignee']

@@ -5,7 +5,7 @@ class Status(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
     class Meta:
         verbose_name_plural = "statuses"
@@ -14,7 +14,7 @@ class Category(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
-        return self.name
+        return str(self.name)
 
 class Task(models.Model):
     title = models.CharField(max_length=200)
@@ -24,4 +24,4 @@ class Task(models.Model):
     status = models.ForeignKey(Status, on_delete=models.PROTECT, related_name='tasks')
 
     def __str__(self):
-        return self.title
+        return str(self.title)

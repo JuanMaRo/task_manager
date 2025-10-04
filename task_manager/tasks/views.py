@@ -21,9 +21,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     # Permissions will handle who can edit/delete.
     queryset = Task.objects.all()
 
-    # Force the use of the full template rendering context for the browsable API
-    template_name = 'rest_framework/api.html'
-
     serializer_class = TaskSerializer
     permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
     filterset_fields = ['category', 'status']
