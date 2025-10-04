@@ -10,15 +10,12 @@ class UserViewSet(mixins.CreateModelMixin, viewsets.GenericViewSet):
     """
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
-    permission_classes = [permissions.AllowAny] # Allow anyone to register
+    permission_classes = [permissions.AllowAny]
 
 class TaskViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows tasks to be viewed, created, edited or deleted.
     """
-    # Only show tasks that belong to the current user
-    # Allow all authenticated users to see all tasks.
-    # Permissions will handle who can edit/delete.
     queryset = Task.objects.all()
 
     serializer_class = TaskSerializer
@@ -26,7 +23,6 @@ class TaskViewSet(viewsets.ModelViewSet):
     filterset_fields = ['category', 'status']
 
     def perform_create(self, serializer):
-        # Automatically assign the logged-in user as the assignee
         serializer.save(assignee=self.request.user)
 
 class CategoryViewSet(viewsets.ModelViewSet):

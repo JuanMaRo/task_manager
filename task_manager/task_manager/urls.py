@@ -25,7 +25,7 @@ schema_view = get_schema_view(
    openapi.Info(
       title="Task Manager API",
       default_version='v1',
-      description="API documentation for the Task Manager application",
+      description="Documentación de la API para la aplicación Task Manager. Primero hay que registrarse y luego autenticarse para usar los endpoints. No es necesario autenticarse para ver la documentación. Para crear una tarea no es obligatorio tener una categoría asignada.",
       terms_of_service="https://www.google.com/policies/terms/",
       contact=openapi.Contact(email="contact@tasks.local"),
       license=openapi.License(name="BSD License"),
